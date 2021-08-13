@@ -20,10 +20,11 @@ export default class RestoService {
       id: number,
       order: order
     }
+
     const response = await fetch(`${this._apiBase}/orders`, {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json:charset=utf-8'
+        'Content-Type': 'application/json;charset=utf-8'
       },
       body: JSON.stringify(newOrder)
     });
@@ -33,7 +34,7 @@ export default class RestoService {
   }
 
   async getOrderNumber() {
-    const res = this.getResource('/orders');
+    const res = await this.getResource('/orders/');
     const orderNumber = res.length + 1;
 
     return orderNumber;
